@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>공유 테스트</title>
+    <style>
+        button { 
+            font-size: 18px; 
+            padding: 15px 30px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="share()">공유하기</button>
+    <script>
+        async function share() {
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: '테스트 제목',
+                        text: '테스트 내용입니다.',
+                        url: window.location.href
+                    });
+                    alert('공유 성공!');
+                } catch (e) {
+                    alert('공유 취소 또는 실패');
+                }
+            } else {
+                alert('이 브라우저는 공유 기능을 지원하지 않습니다');
+            }
+        }
+    </script>
+</body>
+</html>
